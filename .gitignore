@@ -63,3 +63,19 @@ target/
 
 #Ipython Notebook
 .ipynb_checkpoints
+
+
+# python3 venv
+bin/
+include/
+share/
+etc/
+pyvenv.cfg
+pip-selfcheck.json
+
+# boston_housing submission
+projects/*
+!projects/boston_housing/
+projects/boston_housing/*
+!projects/boston_housing/boston_housing.html
+!projects/boston_housing/boston_housing.ipynb
