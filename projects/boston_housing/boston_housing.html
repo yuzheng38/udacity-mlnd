@@ -13142,7 +13142,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import libraries necessary for this project</span>
@@ -13214,20 +13214,20 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Minimum price of the data</span>
-<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Maximum price of the data</span>
-<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Mean price of the data</span>
-<span class="n">mean_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mean_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Median price of the data</span>
-<span class="n">median_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="n">median_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Standard deviation of prices of the data</span>
 <span class="n">std_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
@@ -13294,9 +13294,9 @@ Standard deviation of prices: $165171.13154429474
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>An increase in 'RM' value will most likely lead to an increase in the 'MEDV' value. Conversely, a decrease in 'RM' value leads to a decrease in the 'MEDV' value.</p>
-<p>An increase in 'LSTAT' will most likely lead to a decrease in 'MEDV' value, and vice versa.</p>
-<p>An increase in 'PTRATIO' most likely leads to a decrease in 'MEDV' value, and vice versa.</p>
+<p>An increase in 'RM' value will most likely lead to an increase in the 'MEDV' value. Conversely, a decrease in 'RM' value leads to a decrease in the 'MEDV' value. With the other two features being equal, a house will probably have a higher price with more number of rooms.</p>
+<p>An increase in 'LSTAT' will most likely lead to a decrease in 'MEDV' value, and vice versa. With the other two features being equal, a house in a neighborhood of a lot of lower class workers is probably less desirable thus having a lower price.</p>
+<p>An increase in 'PTRATIO' most likely leads to a decrease in 'MEDV' value, and vice versa. A school district with a high PTRATIO usually indicates lower quality of education. Houses in such district are less attractive to buyers, resulting in lower house prices.</p>
 
 </div>
 </div>
@@ -13326,7 +13326,7 @@ Standard deviation of prices: $165171.13154429474
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">r2_score</span>
@@ -13387,7 +13387,7 @@ Standard deviation of prices: $165171.13154429474
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calculate the performance of this model</span>
@@ -13441,6 +13441,11 @@ Standard deviation of prices: $165171.13154429474
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
 <p>This model has successfully captured the variation of the target variable. Because it has a R2 score of 0.923, which means that 92.3% of the variance in Y is predictable from X.</p>
+<p>Given the formula for R<sup>2</sup>:
+    $R^2 = (1 - \frac{SS_{residual}}{SS_{total}})$ where 
+    $SS_{residual} = \sum_{i=1}{}(y_i - f_i)$ and
+    $SS_{total} = \sum_{i=1}{}(y_i - \bar{y})$</p>
+<p>a good model has $SS_{residual}$ as close to $SS_{total}$ as possible, meaning that the regression model can predict most of the variances in the data.</p>
 
 </div>
 </div>
@@ -13464,7 +13469,7 @@ Standard deviation of prices: $165171.13154429474
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[46]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Import &#39;train_test_split&#39;</span>
@@ -13515,7 +13520,16 @@ Standard deviation of prices: $165171.13154429474
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>If the training set is too small, there might not be enough data to train an accurate model that can sufficiently describe the dataset, most likely causing underfitting. If the testing subset is too small and the training subset is too large, then the model could end up overfitting, and there'd not be enough data to validate the model.</p>
+<p>The benefit of splitting a dataset into training and testing subsets are as follows:</p>
+<ol>
+<li>If the whole dataset is used to train the model, we are not left with data points to test if the model overfits, underfits, or generalizes well. A trained model can have low training error, but without testing it on unseen data points, it could mean that the model overfits to the dataset. That's why a testing subset is necessary. </li>
+<li>With a testing subset, we can determine the quality of a trained model based on the general rules below:<ul>
+<li>Low training error + high testing error = overfitting</li>
+<li>High training error = underfitting</li>
+<li>Low training error + low testing error = good fit. </li>
+</ul>
+</li>
+</ol>
 
 </div>
 </div>
@@ -13718,7 +13732,17 @@ Think about the pros and cons of adding more training points based on if the tra
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
-<p>Grid search technique is used to find optimal hyper parameters for a model. This is used when there are more than 1 hyper parameters for a model. Take a decision tree model as an example, its hyper parameters include max_depth, min_leaf_split and so on. In the decision tree graph in Q5, though a max depth of 3 produced a good model that generalizes well to unseen data. There are other hyper parameters that can impact the model. Using grid search allows us to find the optimal combination of hyper parameters.</p>
+<p>Grid search technique is used to find optimal hyper parameters for a model. A grid search usually consists of:</p>
+
+<pre><code>* an estimator (regressor or classifier)
+* (hyper)parameter space. e.g. max depth of a decision tree classifier
+* a scoring function e.g. r2 score
+* a cross validation scheme
+* a search or sampling method. (exhaustive or randmized)
+
+</code></pre>
+<p>Grid search returns a number of things, most importantly the best estimator, i.e. the estimator which gave highest score according to the provided scoring function.</p>
+<p>This is used when there are more than 1 hyper parameters for a model. Take a decision tree model as an example, its hyper parameters include max_depth, min_leaf_split and so on. In the decision tree graph in Q5, though a max depth of 3 produced a good model that generalizes well to unseen data. There are other hyper parameters that can impact the model. Using grid search allows us to find the optimal combination of hyper parameters.</p>
 
 </div>
 </div>
@@ -13743,7 +13767,7 @@ Think about the pros and cons of adding more training points based on if the tra
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
 <ul>
-<li><p>K-fold cross validation training technique is one which splits the dataset into k smaller subsets. k-1 of the subsets are used to train a model, and the remaining 1 subset is used to validate the model. The model is trained and validated k times.</p>
+<li><p>K-fold cross validation training technique is one which splits the training dataset (excluding the test set) into k smaller subsets. k-1 of the subsets are used to train a model, and the remaining 1 subset is used to validate the model. The model is trained and validated k times. The average cv score is used to check the performance of the model.</p>
 </li>
 <li><p>In grid search, each combination of hyper parameters is trained and tested once to find the optimal combination. Using grid search with k-fold cross validation allows the each combination of hyper parameters to be trained and tested k times, reducing the possibility of one combination overfitting. K-fold cross validation indirectly increases the total number of training and testing points, which would be helpful in training more complex models.</p>
 </li>
@@ -13781,7 +13805,7 @@ Think about the pros and cons of adding more training points based on if the tra
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Import &#39;make_scorer&#39;, &#39;DecisionTreeRegressor&#39;, and &#39;GridSearchCV&#39;</span>
@@ -13795,7 +13819,6 @@ Think about the pros and cons of adding more training points based on if the tra
     
     <span class="c1"># Create cross-validation sets from the training data</span>
     <span class="n">cv_sets</span> <span class="o">=</span> <span class="n">ShuffleSplit</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.20</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">cv_sets</span><span class="p">)</span>
 
     <span class="c1"># TODO: Create a decision tree regressor object</span>
     <span class="n">regressor</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -13884,6 +13907,7 @@ Parameter &#39;max_depth&#39; is 4 for the optimal model.
 <p><strong> Hint: </strong> The answer comes from the output of the code snipped above.</p>
 <p><strong>Answer:</strong>
 Mas depth is 4.</p>
+<p>This is similar to the guess in Q6, which indicated max depth of 3 produces the optimal model. GridSearchCV found a better hyper parameter than my guess because the validation score between max_depth=3 and 4 are very close, and training score of max_depth=4 is higher than that of max_depth=4.</p>
 
 </div>
 </div>
@@ -13978,7 +14002,10 @@ Predicted selling price for Client 3&#39;s home: $931,636.36
 <p>Client 1: $403,025.00</p>
 <p>Client 2: $237,478.72</p>
 <p>Client 3: $931,636.36</p>
-<p>These prices seem reasonable according to the hinted features.</p>
+<p>All 3 predictions seem reasonable, as they fall in the min-max range found during data exploration phase.</p>
+<p>Of the 3 clients, client 3 has the biggest house, in the best public school neighborhood with the lowest poverty level, so its prediction is reasonable (close to the max of the range). 
+Client 2 has the smallest house, in a neighborhood with a relatively high poverty rate and not the best public schools, so its prediction is just a little higher the min of the range. 
+These predictions are consistent with the assumptions we established while observing the features of this dataset.</p>
 
 </div>
 </div>
@@ -14070,7 +14097,9 @@ Range in prices: $73,357.39
 <ol>
 <li>The training data points are out dated. </li>
 <li>There are a lot of other important features omitted by the dataset. For example, square feet, property taxes, quality of school district, and so on. Macro-economical features also have big impact on house prices. </li>
-<li>The model did not make consistent predictions as shown in vs.PredictTrails() result. </li>
+<li>The model did not make consistent predictions as shown in vs.PredictTrails() result.</li>
+<li>Data collected in an urban city like Boston is not applicable in a rural city. One feature that might be very important in an urban setting might not be relevant in a rural setting. For example, the floor number of a condo in downtown Boston is a good feature to have in order to make a prediction, but this is not relevant in a rural city. </li>
+<li>Solely judging the price based on the characteristics of the entire neighborhood is not fair. Characteristics of individual houses also need to be considered, such as renovation, appliances, age and so on. </li>
 </ol>
 
 </div>
