@@ -72,10 +72,3 @@ share/
 etc/
 pyvenv.cfg
 pip-selfcheck.json
-
-# boston_housing submission
-projects/*
-!projects/boston_housing/
-projects/boston_housing/*
-!projects/boston_housing/boston_housing.html
-!projects/boston_housing/boston_housing.ipynb
